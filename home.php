@@ -1,6 +1,6 @@
-<?php include('partials-front/header.php'); ?>
 
-    <!-- Search Section Starts -->
+<?php include('partials-front/header.php'); ?>
+<!-- Search Section Starts -->
     <section class="search-section">
         <div class="container">
             <form action="<?php echo SITEURL ?>food-search.php" class="search" method="POST">
@@ -23,53 +23,40 @@
                 </div>
 
                 <div class="category-wrapper">
-
                     <?php
-                        //Create SQL Query to Display CAtegories from Database
                         $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 3";
-
-                        //Execute the Query
                         $res = mysqli_query($conn, $sql);
-
-                        //Count rows to check whether the category is available or not
                         $count = mysqli_num_rows($res);
 
                         if($count>0)
                         {
-                            //CAtegories Available
                             while($row=mysqli_fetch_assoc($res))
                             {
-                                //Get the Values like id, title, image_name
                                 $id = $row['id'];
                                 $title = $row['title'];
                                 $image_name = $row['image_name'];
                                 ?>
                                     <a class="category-link" href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>"> 
                                     <?php 
-                                        //Check whether Image is available or not
                                         if($image_name=="")
                                         {
-                                            //Display MEssage
                                             echo "<div class='error'>Image not Available</div>";
                                         }
                                         else
                                         {
-                                            //Image Available
                                             ?>
                                             <img alt="category-images" class="category-image" src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>">
                                             <?php
                                         }
                                     ?>
-                                        
-                                        <div class="over-view"></div> 
-                                        <h2 class="category-title"><?php echo $title; ?></h2> 
+                                    <div class="over-view"></div> 
+                                    <h2 class="category-title"><?php echo $title; ?></h2> 
                                     </a>
                                 <?php
                             }
                         }
                         else
                         {
-                            //Categories not Available
                             echo "<div class='error'>Category not Added.</div>";
                         }
                     ?>
@@ -79,10 +66,9 @@
     </section>
 
     <!-- Food Menu Section Starts -->
-    <section class="food-menu-section">
+    <section class="food-menu-section" style="padding-bottom: 0;">
         <div class="container">
             <div class="food-menu-inner">
-
                 <div class="title-block">
                     <h1>Food Menu</h1>
                     <a class="see-all" href="./foods.php">
@@ -90,51 +76,35 @@
                         <img alt="arrow-icon" src="./images/arrow-icon.svg">
                     </a>
                 </div>
-
                 <div class="food-menu-wrapper">
                     <?php
-
-                        //getting foods from database that are active and featured
-                        //SQl Query 
-                        $sql2 = "SELECT * FROM tbl_food WHERE active='Yes' AND featured='yes' LIMIT 6";
-
-                        //Execute the query
+                        $sql2 = "SELECT * FROM tbl_food WHERE active='Yes' AND featured='yes' LIMIT 3";
                         $res2 = mysqli_query($conn, $sql2);
-
-                        //Count rows
                         $count2 = mysqli_num_rows($res2);
 
-                        //check weather the food is available or not 
                         if($count2>0){
-                            // food available
                             while($row=mysqli_fetch_assoc($res2)){
-                                //Get all the values
                                 $id = $row['id'];
                                 $title = $row['title'];
                                 $price = $row['price'];
                                 $description = $row['description'];
                                 $image_name = $row['image_name'];
                                 ?>
-
                                     <div class="product-block">
                                         <div class="product-image-block">
                                         <?php
-                                            //check weather image available or not 
                                             if($image_name==""){
-                                                //Image not available 
-                                                echo"<div class='error'>Image is not Available.</div";
+                                                echo"<div class='error'>Image is not Available.</div>";
                                             }
                                             else{
-                                                //image is available
                                                 ?>
-                                                    <img alt="food-image" class="product-image" src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>">
+                                                    <img alt="food-image" class="product-image" src="<?php echo SITEURL; ?>admin/pages/images/food/<?php echo $image_name; ?>">
                                                 <?php
                                             }
                                         ?>
                                             <div class="shade"></div>
                                             <div class="price">
-                                               
-                                                <div><?php echo $price; ?></div>
+                                                <div>₹<?php echo $price; ?></div>
                                             </div>
                                             <h3 class="product-title"><?php echo $title; ?></h3>
                                         </div>
@@ -147,10 +117,8 @@
                             }
                         }
                         else{
-                            //food is not available
                             echo "<div class='error'>Food is not available.</div>";
                         }
-        
                     ?>
                 </div>
             </div>
@@ -158,10 +126,51 @@
     </section>
 
     <!-- Reviews Section Starts -->
+ <!-- Reviews Section Starts -->
+ <section class="reviews-section" style="background-color: #f8f8f8; padding: 40px 0;">
+        <div class="container">
+            <div class="reviews-inner">
+                <div class="title-block" style="text-align: center; margin-bottom: 20px;">
+                    <h1 style="font-size: 2rem; color: #333;">Reviews</h1>
+                </div>
+                <div class="reviews-wrapper" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <?php
+    $sql3 = "SELECT * FROM tbl_reviews ORDER BY created_at DESC LIMIT 3";
+    $result = mysqli_query($conn, $sql3);
+?>
+                    <?php if ($result && $result->num_rows > 0): ?>
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                            <?php
+                                $name = htmlspecialchars($row["reviewer_name"]);
+                                $rating = intval($row["rating"]);
+                                $comment = htmlspecialchars($row["review"]);
+                                $date = date("F j, Y", strtotime($row["created_at"]));
+                            ?>
+                            <div class="review-block" style="background: #000000; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+                                <div class="review-header" style="display: flex; align-items: center; gap: 10px;">
+                                    <img src="https://i.pravatar.cc/150?u=<?php echo urlencode($name); ?>" alt="<?php echo $name; ?>" class="review-avatar" style="border-radius: 50%; width: 50px; height: 50px;">
+                                    <div class="review-info">
+                                        <h3 class="reviewer-name" style="margin: 0; font-size: 1.2rem; color: #444;"><?php echo $name; ?></h3>
+                                        <div class="review-rating" style="color: #f4c542;">
+                                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                                <span class="star" style="font-size: 1.2rem; <?php echo ($i <= $rating) ? 'color: #f4c542;' : 'color: #ccc;'; ?>">★</span>
+                                            <?php endfor; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="review-text" style="font-size: 1rem; color: #666; margin: 10px 0;">"<?php echo $comment; ?>"</p>
+                                <span class="review-date" style="font-size: 0.9rem; color: #999;">Posted on <?php echo $date; ?></span>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p class="text-gray-600 text-center" style="text-align: center; color: #999; font-size: 1.2rem;">No reviews found.</p>
+                    <?php endif; ?>
+                    <?php $conn->close(); ?>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-<!-- Reviews Section Ends -->
 
     <!-- Shop Section Starts -->
     <section class="shop-section">

@@ -84,14 +84,14 @@
                                             //image is available
                                             ?>
                                                 
-                                                <img alt="food-image" class="product-image" src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>">
+                                                <img alt="food-image" class="product-image" src="<?php echo SITEURL; ?>admin/pages/images/food/<?php echo $image_name; ?>">
                                             <?php
                                         }
                                     ?>
                                         <div class="shade"></div>
                                         <div class="price">
                                             <img src="./images/dollar-image.svg" alt="star-icon">
-                                            <div><?php echo $price; ?></div>
+                                            <div>₹<?php echo $price; ?></div>
                                         </div>
                                         <h3 class="product-title"><?php echo $title; ?></h3>
                                     </div>

@@ -242,11 +242,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>Selected Food</h2>
                 <div class="product-info">
                     <?php if($image_name != "") { ?>
-                        <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" class="img-responsive img-curve">
+                        <img src="<?php echo SITEURL; ?>admin/pages/images/food/<?php echo $image_name; ?>" class="img-responsive img-curve">
                     <?php } else { echo "<div class='error'>Image not Available.</div>"; } ?>
                     <div class="food-content">
                         <h1 class="food-title"><?php echo $title; ?></h1>
-                        <p><?php echo $price; ?></p>
+                        <p>₹<?php echo $price; ?></p>
                         <label>Quantity</label>
                         <input type="number" name="qty" class="text-input" value="1" min="1" required>
                     </div>
@@ -292,7 +292,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td><?php echo $order['id']; ?></td>
                                 <td><?php echo $order['title']; ?></td>
                                 <td><?php echo $order['quantity']; ?></td>
-                                <td><?php echo number_format($order['total_price'], 2); ?></td>
+                                <td>₹<?php echo number_format($order['total_price'], 2); ?></td>
                                 <td><?php echo date('d/m/y', strtotime($order['order_date'])); ?></td>
                                 <td>
                                     <span class="status-badge status-<?php echo strtolower($order['status']); ?>">

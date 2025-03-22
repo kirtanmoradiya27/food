@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle file upload only if a new file is selected
     if (isset($_FILES['image_name']) && $_FILES['image_name']['error'] == 0 && $_FILES['image_name']['size'] > 0) {
         $image_name = $_FILES['image_name']['name'];
-        $target_dir = "images/food/";
+        $target_dir = "admin/pages/images/food/";
         $target_file = $target_dir . basename($image_name);
         move_uploaded_file($_FILES['image_name']['tmp_name'], $target_file);
     }
@@ -174,7 +174,7 @@ $result = $conn->query($sql);
                                             <td><?= htmlspecialchars($row['price']) ?></td>
                                             <td>
                                                 <?php if ($row['image_name']): ?>
-                                                <img src="./images/food/<?= htmlspecialchars($row['image_name']) ?>"
+                                                <img src="./admin/pages/images/food/<?= htmlspecialchars($row['image_name']) ?>"
                                                     width="100" class="rounded">
                                                 <?php else: ?>
                                                 <div class='error'>Image not added.</div>
@@ -334,7 +334,7 @@ $result = $conn->query($sql);
                         if (response.image_name) {
                             $("#current_image").val(response.image_name);
                             $("#image_name_display").text(response.image_name);
-                            $("#preview_current_image").attr("src", "./images/food/" +
+                            $("#preview_current_image").attr("src", "./admin/pages/images/food/" +
                                 response.image_name);
                             $("#current_image_display").show();
                         } else {
