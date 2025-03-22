@@ -1,0 +1,211 @@
+/* 
+    Author: karnav Ghasadiya;
+    Theme: Restaurant Food Order;
+    version: 1.0;
+*/
+
+
+.mail-link:hover{
+    text-decoration: none;
+    color: black;
+}
+
+*{
+    margin: 0 0;
+    padding: 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper{   
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+.tbl-full{
+    width: 100%;
+}
+
+.width{
+    width: 30%;
+}
+
+table tr th{
+    border-bottom: 1px solid black;
+    padding: 1% ;
+    text-align: left;
+}
+
+table tr td{
+    padding: 1%;
+}
+
+table tr td input{
+    padding: 2% 5%;
+}
+
+table tr td textarea{
+    padding: 2% 5%;
+}
+
+table tr td select{
+    padding: 2% 5%;
+}
+
+.tbl-30{
+    width: 30%;
+}
+
+.btn-primary{
+    background-color: #1e90ff;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 300ms;
+}
+
+.btn-primary:hover{
+    background-color: #3742fa;
+}
+
+.btn-secondary{
+    background-color: #7bed9f;
+    padding: 1%;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 300ms;
+}
+
+.btn-secondary:hover{
+    background-color: #2ed573;
+    color: black;
+}
+
+.btn-danger{
+    background-color: #ff6b81;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 300ms;
+}
+
+.btn-danger:hover{
+    background-color: #ff4757;
+}
+
+.success{
+    color: #2ed573;
+}
+
+.error{
+    color: #ff4757;
+}
+
+/* css for Menu */
+
+.menu{
+    border-bottom: 1px solid black;
+}
+
+.menu ul{
+    list-style-type: none;
+}
+
+.menu ul li{
+    display: inline;
+    padding: 1%;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ff6b81;
+    transition: all 300ms;
+}
+
+.menu ul li a:hover{
+    color: #ff4757;
+}
+
+
+/* css for main content */
+
+.main-content{
+    padding: 3% 0%;
+    background-color: #f1f2f6;
+}
+
+.col-4{
+    width: 18%;
+    background-color: white;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+}
+
+
+/* css for footer */
+
+.footer{
+    background-color: #ff4757;
+    color: white;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+    transition: all 300ms;
+}
+
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+/* CSS for Login */
+
+.login{
+    border: 1px solid grey;
+    width: 30%;
+    margin: 5% auto;
+    padding: 2%;
+}
+
+.login-input{
+    padding: 1% 2%;
+    margin-top: 8px;
+}
+
+/* CSS For Add category */
+
+.text{
+    width: 100%;
+}
+
+.input-image{
+    padding: 0;
+}
+
+/* Css for Update Category */
+
+.current-image{
+    display: inline-block;
+}
+
+/* Css for Add food */
+
+#select{
+    padding: 2% 5%;
+}
